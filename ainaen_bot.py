@@ -1713,7 +1713,7 @@ async def enhancement(ctx, *args):
     message = ' '.join(args).lower().strip()
 
     if not message.startswith("enh for"):
-        await ctx.send("Please use the format: `!nn enh for <class name>`")
+        await ctx.send("Please read and use the format??? wtf man: `!nn enh for <class name>`")
         return
 
     class_name = message.replace("enh for", "").strip()
@@ -1729,7 +1729,7 @@ async def enhancement(ctx, *args):
             f"Cape: {data['cape']}"
         )
     else:
-        reply = f"Sorry, I couldn't find enhancements for `{class_name}`."
+        reply = f"Sorry, I couldn't find enhancements for `{class_name}`. You dumbass bitch."
 
     await ctx.send(reply)
 
