@@ -1732,6 +1732,11 @@ async def enhancement(ctx, *args):
         reply = f"Sorry, I couldn't find enhancements for `{class_name}`. You dumbass bitch."
 
     await ctx.send(reply)
+    
+    elif message == "cruel":
+        await ctx.send(
+            "**no drama. no fights. only love.**"
+        )
 
 # Replace 'YOUR_DISCORD_BOT_TOKEN' with your actual token
 bot.run(os.getenv("DISCORD_TOKEN"))
