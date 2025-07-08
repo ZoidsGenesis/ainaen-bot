@@ -1733,4 +1733,5 @@ async def enhancement(ctx, *args):
     await ctx.send(reply)
 
 # Replace 'YOUR_DISCORD_BOT_TOKEN' with your actual token
-bot.run('MTM5MjA0MjY2MzIwNDc0OTM2Mg.G8qTU2.u_zF8371omOYoT6Jv9G_p65TJp1r-5ne8Zpeew')
+import os
+bot.run(os.getenv("DISCORD_TOKEN"))
