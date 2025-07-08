@@ -1712,11 +1712,11 @@ async def on_ready():
 async def enhancement(ctx, *args):
     message = ' '.join(args).lower().strip()
 
-    if not message.startswith("enhancement for"):
-        await ctx.send("Please use the format: `!nn enhancement for <class name>`")
+    if not message.startswith("enh for"):
+        await ctx.send("Please use the format: `!nn enh for <class name>`")
         return
 
-    class_name = message.replace("enhancement for", "").strip()
+    class_name = message.replace("enh for", "").strip()
     data = enhancements.get(class_name)
 
     if data:
