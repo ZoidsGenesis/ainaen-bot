@@ -1765,7 +1765,7 @@ async def enhancement(ctx, *args):
         return
 
     if not message.startswith("enh for"):
-        await ctx.send("please read and use the format??? wtf man: `!nn enh for <class name>`")
+        await ctx.send("Please read and use the format??? wtf man: `!nn enh for <class name>`")
         return
 
     class_name = message.replace("enh for", "").strip()
@@ -1773,28 +1773,28 @@ async def enhancement(ctx, *args):
 
     if data:
         reply = (
-            f"**enhancements for {class_name.title()}**\n"
-            f"purpose: {data['purpose']}\n"
-            f"class: {data['class']}\n"
-            f"weapon: {data['weapon']}\n"
-            f"helm: {data['helm']}\n"
-            f"cape: {data['cape']}"
+            f"**Enhancements for {class_name.title()}**\n"
+            f"Purpose: {data['purpose']}\n"
+            f"Class: {data['class']}\n"
+            f"Weapon: {data['weapon']}\n"
+            f"Helm: {data['helm']}\n"
+            f"Cape: {data['cape']}"
         )
     else:
-        reply = f"sorry, i couldn't find enhancements for `{class_name}`. you dumbass bitch."
+        reply = f"Sorry, I couldn't find enhancements for `{class_name}`. You dumbass bitch."
 
     await ctx.send(reply)
 
 # ⏰ Daily auto-post at 10:23 PM PH (UTC+8)
 async def daily_reset_task():
     await bot.wait_until_ready()
-    channel_id = 1349520048087236670  # your channel ID here
-    user_id = 1346856971902386267     # user to ping
+    channel_id = 1350109632256802878  # your channel ID here
+    role_id = 1347486304492982374     # role to ping
     channel = bot.get_channel(channel_id)
 
     while not bot.is_closed():
         now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
-        target = now.replace(hour=22, minute=23, second=0, microsecond=0)
+        target = now.replace(hour=12, minute=0, second=0, microsecond=0)
 
         if now > target:
             target += datetime.timedelta(days=1)
@@ -1804,7 +1804,7 @@ async def daily_reset_task():
         await asyncio.sleep(wait_time)
 
         if channel:
-            await channel.send(f"<@{user_id}>\n{dailies_message()}")
+            await channel.send(f"<@&{role_id}>\n{dailies_message()}")
     
 # Replace 'YOUR_DISCORD_BOT_TOKEN' with your actual token
 bot.run(os.getenv("DISCORD_TOKEN"))
