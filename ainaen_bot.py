@@ -1716,8 +1716,8 @@ async def enhancement(ctx, *args):
         await ctx.send("**no drama. no fight. only love. OR ELSE MUTE?????**")
         return
         
-        if message == "dailies":
-            await ctx.send(
+    if message == "dailies":
+        await ctx.send(
             "## **Dailies:**\n\n"
             "### **Classes:**\n"
             "- Pyro Class: Blaze Token\n"
