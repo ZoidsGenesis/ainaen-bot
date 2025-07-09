@@ -8,7 +8,27 @@ import os
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
-tree = bot.tree  # ✅ Required for slash command usage
+# ✅ SLASH COMMAND: /nn (help only)
+@bot.tree.command(name="nn", description="show help menu for !nn commands")
+async def nn_help(interaction: discord.Interaction):
+    await interaction.response.send_message(
+        "**🧠 ainaen bot – command list:**\n"
+        "- `!nn cruel` – guild motto (no drama. only love.)\n"
+        "- `!nn dailies` – daily quests + boss checklist\n"
+        "- `!nn enh for <class>` – enhancement builds",
+        ephemeral=True
+    )
+
+# 🔄 Sync slash command
+@bot.event
+async def on_ready():
+    print(f"✅ logged in as {bot.user}")
+    try:
+        synced = await bot.tree.sync()
+        print(f"✅ synced {len(synced)} slash command(s)")
+    except Exception as e:
+        print(f"❌ slash command sync failed: {e}")
+    bot.loop.create_task(daily_reset_task())
 
 enhancements = {
     "abyssal angel": {
@@ -1749,16 +1769,7 @@ def dailies_message():
         "- Legion Tokens / Soul Sand: Daily Exercise 1-6"
     )
 
-@bot.event
-async def on_ready():
-    print(f'✅ Logged in as {bot.user}')
-    try:
-        synced = await bot.tree.sync()
-        print(f"✅ Synced {len(synced)} slash command(s)")
-    except Exception as e:
-        print(f"❌ Slash sync failed: {e}")
-    bot.loop.create_task(daily_reset_task())
-
+# 🎮 !nn command
 @bot.command(name='nn')
 async def enhancement(ctx, *args):
     message = ' '.join(args).lower().strip()
@@ -1792,33 +1803,11 @@ async def enhancement(ctx, *args):
 
     await ctx.send(reply)
 
-# ✅ Single slash command with sub-options
-@tree.command(name="nn", description="main slash command for ainaen bot")
-@app_commands.describe(action="choose: help, dailies, or cruel")
-async def nn_slash(interaction: discord.Interaction, action: str):
-    action = action.lower().strip()
-
-    if action == "help":
-        await interaction.response.send_message(
-            "**🧠 ainaen bot – command list:**\n\n"
-            "/nn help – show this command list\n"
-            "/nn dailies – view daily quests and boss checklist\n"
-            "/nn cruel – guild motto (no drama. only love.)\n"
-            "!nn enh for <class name> – shows the best enhancements for a class",
-            ephemeral=True
-        )
-    elif action == "dailies":
-        await interaction.response.send_message(dailies_message())
-    elif action == "cruel":
-        await interaction.response.send_message("**no drama. no fight. only love. OR ELSE MUTE?????**")
-    else:
-        await interaction.response.send_message("unknown action. try `/nn help`", ephemeral=True)
-
 # ⏰ Daily auto-post at 12:00 PM PH time
 async def daily_reset_task():
     await bot.wait_until_ready()
-    channel_id = 1350109632256802878
-    role_id = 1347486304492982374
+    channel_id = 1350109632256802878  # your channel ID
+    role_id = 1347486304492982374     # role to ping
     channel = bot.get_channel(channel_id)
 
     while not bot.is_closed():
@@ -1835,5 +1824,5 @@ async def daily_reset_task():
         if channel:
             await channel.send(f"<@&{role_id}>\n{dailies_message()}")
 
-# Run the bot
+# 🔒 Run the bot
 bot.run(os.getenv("DISCORD_TOKEN"))
