@@ -1792,7 +1792,7 @@ async def daily_reset_task():
 
     while not bot.is_closed():
         now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # convert UTC to PH time
-        target = now.replace(hour=22, minute=17, second=0, microsecond=0)  # ⏰ 10:15 PM PH
+        target = now.replace(hour=22, minute=18, second=0, microsecond=0)  # ⏰ 10:15 PM PH
 
         if now > target:
             target += datetime.timedelta(days=1)
@@ -1802,7 +1802,7 @@ async def daily_reset_task():
         await asyncio.sleep(wait_time)
 
         if channel:
-            await channel.send("<@1346856971902386267> !nn dailies")
+            await channel.send("!nn dailies")
     
 # Replace 'YOUR_DISCORD_BOT_TOKEN' with your actual token
 bot.run(os.getenv("DISCORD_TOKEN"))
