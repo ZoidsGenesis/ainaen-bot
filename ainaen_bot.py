@@ -1783,11 +1783,11 @@ async def enhancement(ctx, *args):
         return
 
     if not message:
-        await ctx.send("type `/nn` to see a list of available commands.")
+        await ctx.send("Type `/nn` to see a list of available commands.")
         return
 
     if not message.startswith("enh for"):
-        await ctx.send("please read and use the format??? wtf man: `!nn enh for <class name>`")
+        await ctx.send("Please read and use help??? wtf man: `/nn` to see a list of commands")
         return
 
     class_name = message.replace("enh for", "").strip()
@@ -1795,15 +1795,15 @@ async def enhancement(ctx, *args):
 
     if data:
         reply = (
-            f"**enhancements for {class_name.title()}**\n"
-            f"purpose: {data['purpose']}\n"
-            f"class: {data['class']}\n"
-            f"weapon: {data['weapon']}\n"
-            f"helm: {data['helm']}\n"
-            f"cape: {data['cape']}"
+            f"**Enhancements for {class_name.title()}**\n"
+            f"Purpose: {data['purpose']}\n"
+            f"Class: {data['class']}\n"
+            f"Weapon: {data['weapon']}\n"
+            f"Helm: {data['helm']}\n"
+            f"Cape: {data['cape']}"
         )
     else:
-        reply = f"sorry, i couldn't find enhancements for `{class_name}`. you dumbass bitch."
+        reply = f"Sorry, I couldn't find enhancements for `{class_name}`. You dumbass bitch."
 
     await ctx.send(reply)
 
