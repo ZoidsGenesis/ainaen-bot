@@ -1715,6 +1715,48 @@ async def enhancement(ctx, *args):
     if message == "cruel":
         await ctx.send("**no drama. no fight. only love. OR ELSE MUTE?????**")
         return
+        
+        elif message == "dailies":
+        await ctx.send(
+            "## **Dailies:**\n\n"
+            "### **Classes:**\n"
+            "- Pyro Class: Blaze Token\n"
+            "- Cryo Class: Ice Token\n"
+            "- The Collector Class: Token of Collection (Opt.)\n"
+            "- DKL Class: Shadow Skull (Mem)\n"
+            "- LoO Class: Lord of Order Daily\n"
+            "- SSG Class: SSG Daily (Opt.)\n"
+            "- FB Class: Crypto Token\n"
+            "- VHL Class: Elders' Blood\n\n"
+            "### **Boss Dailies:**\n"
+            "- TimeInn Ultra Bosses (Exalted Apotheosis):\n"
+            "  - UltraEzrajal: Insignia\n"
+            "  - UltraWarden: Insignia\n"
+            "  - UltraEngineer: Insignia\n"
+            "- AstralShrine: Star of the Empyrean\n"
+            "- Queen Iona: Lothian's Lightning (F2P)\n"
+            "- UltraTyndarius: Insignia\n"
+            "- Apex Azalith: Divinas Voluntas (Opt.)\n"
+            "- Templeshrine (Opt.):\n"
+            "  - Sliver of Moonlight\n"
+            "  - Sliver of Sunlight\n"
+            "  - Ecliptic Offering\n\n"
+            "### **Seasonal Bosses:**\n"
+            "- Kasuko: Volcanic Essence (August)\n"
+            "- UltraKala: Insignia (August)\n"
+            "- UltraIara: Insignia (September)\n\n"
+            "### **Useful Materials:**\n"
+            "- Friendship: Gifts + NPCs\n"
+            "- BLoD + Blacksmithing: Mine Crafting\n"
+            "- SDKA + Blacksmithing: Hard Core Metals (Mem)\n"
+            "- Drakath's Armor: Dage's Scroll Fragment\n"
+            "- NSoD: Void Aura (F2P/Mem)\n"
+            "- Nulgath Materials: Voidbuquerque\n"
+            "- Wheel of Doom 1hr Boosts (Mem)\n"
+            "- Hearty Enh + Boosted Gear: Gaol Cell (Opt.)\n"
+            "- Legion Tokens / Soul Sand: Daily Exercise 1-6"
+        )
+        return
 
     if not message.startswith("enh for"):
         await ctx.send("Please read and use the format??? wtf man: `!nn enh for <class name>`")
