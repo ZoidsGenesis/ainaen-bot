@@ -1783,12 +1783,12 @@ async def enhancement(ctx, *args):
         return
 
     if not message:
-    await ctx.send("type `/nn` to see a list of available commands.")
-    return
+        await ctx.send("type `/nn` to see a list of available commands.")
+        return
 
     if not message.startswith("enh for"):
-    await ctx.send("please read and use help??? wtf man: `/nn` to see the lists of commands")
-    return
+        await ctx.send("please read and use the format??? wtf man: `!nn enh for <class name>`")
+        return
 
     class_name = message.replace("enh for", "").strip()
     data = enhancements.get(class_name)
