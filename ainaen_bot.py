@@ -13,9 +13,9 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def nn_help(interaction: discord.Interaction):
     await interaction.response.send_message(
         "**🧠 ainaen bot – command list:**\n"
-        "- `!nn cruel` – dont prompt it\n"
-        "- `!nn dailies` – what do you think this is? stupid\n"
-        "- `!nn enh for <class>` – enhancement builds",
+        "- `!nn enh for <class>` – enhancement builds"
+        "- `!nn dailies` – what do you think? stupid\n"
+        "- `!nn cruel` – dont prompt it\n",
         ephemeral=True
     )
 
