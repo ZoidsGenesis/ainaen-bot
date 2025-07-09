@@ -13,8 +13,8 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def nn_help(interaction: discord.Interaction):
     await interaction.response.send_message(
         "**🧠 ainaen bot – command list:**\n"
-        "- `!nn cruel` – guild motto (no drama. only love.)\n"
-        "- `!nn dailies` – daily quests + boss checklist\n"
+        "- `!nn cruel` – dont prompt it\n"
+        "- `!nn dailies` – what do you think this is? stupid\n"
         "- `!nn enh for <class>` – enhancement builds",
         ephemeral=True
     )
@@ -1782,9 +1782,13 @@ async def enhancement(ctx, *args):
         await ctx.send(dailies_message())
         return
 
+    if not message:
+    await ctx.send("type `/nn` to see a list of available commands.")
+    return
+
     if not message.startswith("enh for"):
-        await ctx.send("please read and use the format??? wtf man: `!nn enh for <class name>`")
-        return
+    await ctx.send("please read and use help??? wtf man: `/nn` to see the lists of commands")
+    return
 
     class_name = message.replace("enh for", "").strip()
     data = enhancements.get(class_name)
