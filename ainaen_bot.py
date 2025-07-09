@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.tree.command(name="nn", description="show help menu for !nn commands")
 async def nn_help(interaction: discord.Interaction):
     await interaction.response.send_message(
-        "**🧠 ainaen bot – command list:**\n"
+        "**🧠 cruel the best guild – command list:**\n"
         "- `!nn enh for <class name>` – enhancement builds\n"
         "- `!nn dailies` – what do you think? stupid\n"
         "- `!nn cruel` – dont prompt it. only for softies",
