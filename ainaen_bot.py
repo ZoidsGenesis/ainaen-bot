@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import app_commands
 import asyncio
 import datetime
 import os
@@ -7,6 +8,7 @@ import os
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
+tree = app_commands.CommandTree(bot)
 
 enhancements = {
     "abyssal angel": {
@@ -1749,7 +1751,8 @@ def dailies_message():
 
 @bot.event
 async def on_ready():
-    print(f'Logged in as {bot.user}')
+    print(f'✅ Logged in as {bot.user}')
+    await tree.sync()
     bot.loop.create_task(daily_reset_task())
 
 @bot.command(name='nn')
@@ -1785,15 +1788,37 @@ async def enhancement(ctx, *args):
 
     await ctx.send(reply)
 
-# ⏰ Daily auto-post at 10:23 PM PH (UTC+8)
+# 🔁 SLASH COMMAND: /nn help / dailies / cruel
+@tree.command(name="nn", description="main slash command for ainaen bot")
+@app_commands.describe(action="choose what info to show (help, dailies, cruel)")
+async def nn_slash(interaction: discord.Interaction, action: str):
+    action = action.lower().strip()
+
+    if action == "help":
+        await interaction.response.send_message(
+            "**🧠 ainaen bot – command list:**\n\n"
+            "/nn help – show this command list\n"
+            "/nn dailies – view daily quests and boss checklist\n"
+            "/nn cruel – guild motto (no drama. only love.)\n"
+            "/nn enh for <class name> – shows the best enhancements for a class",
+            ephemeral=True
+        )
+    elif action == "dailies":
+        await interaction.response.send_message(dailies_message())
+    elif action == "cruel":
+        await interaction.response.send_message("**no drama. no fight. only love. OR ELSE MUTE?????**")
+    else:
+        await interaction.response.send_message("unknown action. try `/nn help`", ephemeral=True)
+
+# ⏰ Daily auto-post at 12:00 PM PH time
 async def daily_reset_task():
     await bot.wait_until_ready()
-    channel_id = 1350109632256802878  # your channel ID here
+    channel_id = 1350109632256802878  # your channel ID
     role_id = 1347486304492982374     # role to ping
     channel = bot.get_channel(channel_id)
 
     while not bot.is_closed():
-        now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+        now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
         target = now.replace(hour=12, minute=0, second=0, microsecond=0)
 
         if now > target:
