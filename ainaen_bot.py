@@ -1706,11 +1706,51 @@ enhancements = {
 }
 
 
+def dailies_message():
+    return (
+        "## **Dailies:**\n\n"
+        "### **Classes:**\n"
+        "- Pyro Class: Blaze Token\n"
+        "- Cryo Class: Ice Token\n"
+        "- The Collector Class: Token of Collection (Opt.)\n"
+        "- DKL Class: Shadow Skull (Mem)\n"
+        "- LoO Class: Lord of Order Daily\n"
+        "- SSG Class: SSG Daily (Opt.)\n"
+        "- FB Class: Crypto Token\n"
+        "- VHL Class: Elders' Blood\n\n"
+        "### **Boss Dailies:**\n"
+        "- TimeInn Ultra Bosses (Exalted Apotheosis):\n"
+        "  - UltraEzrajal: Insignia\n"
+        "  - UltraWarden: Insignia\n"
+        "  - UltraEngineer: Insignia\n"
+        "- AstralShrine: Star of the Empyrean\n"
+        "- Queen Iona: Lothian's Lightning (F2P)\n"
+        "- UltraTyndarius: Insignia\n"
+        "- Apex Azalith: Divinas Voluntas (Opt.)\n"
+        "- Templeshrine (Opt.):\n"
+        "  - Sliver of Moonlight\n"
+        "  - Sliver of Sunlight\n"
+        "  - Ecliptic Offering\n\n"
+        "### **Seasonal Bosses:**\n"
+        "- Kasuko: Volcanic Essence (August)\n"
+        "- UltraKala: Insignia (August)\n"
+        "- UltraIara: Insignia (September)\n\n"
+        "### **Useful Materials:**\n"
+        "- Friendship: Gifts + NPCs\n"
+        "- BLoD + Blacksmithing: Mine Crafting\n"
+        "- SDKA + Blacksmithing: Hard Core Metals (Mem)\n"
+        "- Drakath's Armor: Dage's Scroll Fragment\n"
+        "- NSoD: Void Aura (F2P/Mem)\n"
+        "- Nulgath Materials: Voidbuquerque\n"
+        "- Wheel of Doom 1hr Boosts (Mem)\n"
+        "- Hearty Enh + Boosted Gear: Gaol Cell (Opt.)\n"
+        "- Legion Tokens / Soul Sand: Daily Exercise 1-6"
+    )
+
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}')
     bot.loop.create_task(daily_reset_task())
-
 
 @bot.command(name='nn')
 async def enhancement(ctx, *args):
@@ -1721,45 +1761,7 @@ async def enhancement(ctx, *args):
         return
 
     if message == "dailies":
-        await ctx.send(
-            "## **Dailies:**\n\n"
-            "### **Classes:**\n"
-            "- Pyro Class: Blaze Token\n"
-            "- Cryo Class: Ice Token\n"
-            "- The Collector Class: Token of Collection (Opt.)\n"
-            "- DKL Class: Shadow Skull (Mem)\n"
-            "- LoO Class: Lord of Order Daily\n"
-            "- SSG Class: SSG Daily (Opt.)\n"
-            "- FB Class: Crypto Token\n"
-            "- VHL Class: Elders' Blood\n\n"
-            "### **Boss Dailies:**\n"
-            "- TimeInn Ultra Bosses (Exalted Apotheosis):\n"
-            "  - UltraEzrajal: Insignia\n"
-            "  - UltraWarden: Insignia\n"
-            "  - UltraEngineer: Insignia\n"
-            "- AstralShrine: Star of the Empyrean\n"
-            "- Queen Iona: Lothian's Lightning (F2P)\n"
-            "- UltraTyndarius: Insignia\n"
-            "- Apex Azalith: Divinas Voluntas (Opt.)\n"
-            "- Templeshrine (Opt.):\n"
-            "  - Sliver of Moonlight\n"
-            "  - Sliver of Sunlight\n"
-            "  - Ecliptic Offering\n\n"
-            "### **Seasonal Bosses:**\n"
-            "- Kasuko: Volcanic Essence (August)\n"
-            "- UltraKala: Insignia (August)\n"
-            "- UltraIara: Insignia (September)\n\n"
-            "### **Useful Materials:**\n"
-            "- Friendship: Gifts + NPCs\n"
-            "- BLoD + Blacksmithing: Mine Crafting\n"
-            "- SDKA + Blacksmithing: Hard Core Metals (Mem)\n"
-            "- Drakath's Armor: Dage's Scroll Fragment\n"
-            "- NSoD: Void Aura (F2P/Mem)\n"
-            "- Nulgath Materials: Voidbuquerque\n"
-            "- Wheel of Doom 1hr Boosts (Mem)\n"
-            "- Hearty Enh + Boosted Gear: Gaol Cell (Opt.)\n"
-            "- Legion Tokens / Soul Sand: Daily Exercise 1-6"
-        )
+        await ctx.send(dailies_message())
         return
 
     if not message.startswith("enh for"):
@@ -1783,16 +1785,16 @@ async def enhancement(ctx, *args):
 
     await ctx.send(reply)
 
-
-# ⏰ Auto-send dailies every day at 10:15 PM PH (UTC+8) — TEMP FOR TESTING
+# ⏰ Daily auto-post at 10:23 PM PH (UTC+8)
 async def daily_reset_task():
     await bot.wait_until_ready()
-    channel_id = 1349520048087236670  # ← replace with actual channel ID as integer
+    channel_id = 1349520048087236670  # your channel ID here
+    user_id = 1346856971902386267     # user to ping
     channel = bot.get_channel(channel_id)
 
     while not bot.is_closed():
-        now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # convert UTC to PH time
-        target = now.replace(hour=22, minute=18, second=0, microsecond=0)  # ⏰ 10:15 PM PH
+        now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+        target = now.replace(hour=22, minute=23, second=0, microsecond=0)
 
         if now > target:
             target += datetime.timedelta(days=1)
@@ -1802,7 +1804,7 @@ async def daily_reset_task():
         await asyncio.sleep(wait_time)
 
         if channel:
-            await channel.send("!nn dailies")
+            await channel.send(f"<@{user_id}>\n{dailies_message()}")
     
 # Replace 'YOUR_DISCORD_BOT_TOKEN' with your actual token
 bot.run(os.getenv("DISCORD_TOKEN"))
