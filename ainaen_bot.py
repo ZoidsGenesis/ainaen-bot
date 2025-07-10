@@ -1798,6 +1798,7 @@ def dailies_embed(include_weekly=False):
     embed.set_footer(text="Type /nn for more commands")
     return embed
 
+# 🔧 !nn command
 @bot.command(name='nn')
 async def enhancement(ctx, *args):
     message = ' '.join(args).lower().strip()
@@ -1807,7 +1808,6 @@ async def enhancement(ctx, *args):
         return
 
     if message == "resetlist":
-        is_friday = datetime.datetime.utcnow().weekday() == 4
         embed = dailies_embed(include_weekly=True)
         await ctx.send(embed=embed)
         return
@@ -1837,7 +1837,7 @@ async def enhancement(ctx, *args):
 
     await ctx.send(reply)
 
-# ⏰ Daily auto-post at 12:00 PM PH time
+# ⏰ Auto-post at 12:00 PM PH time
 async def daily_reset_task():
     await bot.wait_until_ready()
     channel_id = 1355497319084331101  # your channel ID
@@ -1846,7 +1846,7 @@ async def daily_reset_task():
 
     while not bot.is_closed():
         now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
-        target = now.replace(hour=0, minute=52, second=0, microsecond=0)
+        target = now.replace(hour=0, minute=59, second=0, microsecond=0)
 
         if now > target:
             target += datetime.timedelta(days=1)
@@ -1855,41 +1855,8 @@ async def daily_reset_task():
         print(f"⏳ waiting {wait_time / 60:.2f} minutes until next dailies auto-post...")
         await asyncio.sleep(wait_time)
 
-        is_friday = datetime.datetime.utcnow().weekday() == 4  # Friday = 4
-
-        embed = discord.Embed(
-            title="Daily Reset 📅",
-            color=discord.Color.blue()
-        )
-
-        if is_friday:
-            embed.description = (
-                "```markdown\n"
-                "📅 Daily Reset                    🔁 Weeklies\n"
-                "──────────────────────────       ──────────────────────\n"
-                "🔥 Pyro: Blaze Token             • /join ultranulgath\n"
-                "❄️ Cryo: Ice Token              • /join ultradage\n"
-                "💀 DKL: Shadow Skull            • /join ultradrago\n"
-                "⚡ Queen Iona – (F2P)           • /join championdrakath\n"
-                "🔥 UltraTyndarius – Insignia    • /join ultradarkon\n"
-                "🎁 Friendship: Gifts + NPCs     • /join ultraspeaker\n"
-                "⚒️ BLoD / SDKA: Mine Crafting   • /join ultragramiel\n"
-                "```"
-            )
-        else:
-            embed.description = (
-                "```markdown\n"
-                "📅 Daily Reset\n"
-                "──────────────────────────\n"
-                "🔥 Pyro: Blaze Token\n"
-                "❄️ Cryo: Ice Token\n"
-                "💀 DKL: Shadow Skull\n"
-                "⚡ Queen Iona – (F2P)\n"
-                "🔥 UltraTyndarius – Insignia\n"
-                "🎁 Friendship: Gifts + NPCs\n"
-                "⚒️ BLoD / SDKA: Mine Crafting\n"
-                "```"
-            )
+        is_friday = datetime.datetime.utcnow().weekday() == 4
+        embed = dailies_embed(include_weekly=is_friday)
 
         if channel:
             await channel.send(f"<@&{role_id}>", embed=embed)
