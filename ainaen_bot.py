@@ -1729,14 +1729,15 @@ enhancements = {
 
 
 def dailies_message(include_weekly=False):
-    header = "**DAILY RESET**"
+    header = "DAILY RESET"
     if include_weekly:
-        header = "**DAILY + WEEKLY RESET**"
+        header = "DAILY + WEEKLY RESET"
 
-    message = (
-        f"{header}\n\n"
-        "## **Dailies:**\n\n"
-        "### **Classes:**\n"
+    message = f"**`{header}`**\n```"
+
+    message += (
+        "Dailies:\n\n"
+        "Classes:\n"
         "- Pyro Class: Blaze Token\n"
         "- Cryo Class: Ice Token\n"
         "- The Collector Class: Token of Collection (Opt.)\n"
@@ -1745,25 +1746,28 @@ def dailies_message(include_weekly=False):
         "- SSG Class: SSG Daily (Opt.)\n"
         "- FB Class: Crypto Token\n"
         "- VHL Class: Elders' Blood\n\n"
-        "### **Boss Dailies:**\n"
-        "- TimeInn Ultra Bosses (Exalted Apotheosis):\n"
-        "  - UltraEzrajal: Insignia\n"
-        "  - UltraWarden: Insignia\n"
-        "  - UltraEngineer: Insignia\n"
+        "Boss Dailies:\n"
+        "- UltraEzrajal: Insignia\n"
+        "- UltraWarden: Insignia\n"
+        "- UltraEngineer: Insignia\n"
         "- AstralShrine: Star of the Empyrean\n"
         "- Queen Iona: Lothian's Lightning (F2P)\n"
         "- UltraTyndarius: Insignia\n"
         "- Apex Azalith: Divinas Voluntas (Opt.)\n"
-        "- Templeshrine (Opt.):\n"
+        "- Templeshrine:\n"
         "  - Sliver of Moonlight\n"
         "  - Sliver of Sunlight\n"
         "  - Ecliptic Offering\n\n"
-        "### **Useful Materials:**\n"
+        "Seasonal Bosses:\n"
+        "- Kasuko: Volcanic Essence (August)\n"
+        "- UltraKala: Insignia (August)\n"
+        "- UltraIara: Insignia (September)\n\n"
+        "Useful Materials:\n"
         "- Friendship: Gifts + NPCs\n"
         "- BLoD + Blacksmithing: Mine Crafting\n"
         "- SDKA + Blacksmithing: Hard Core Metals <:member:1392745711665283073>\n"
-        "- FREE DAILY BOOST <:member:1392745711665283073>\n"
-        "- NSoD: Void Aura \n"
+        "- Free Daily Boost <:member:1392745711665283073>\n"
+        "- NSoD: Void Aura (F2P/Mem)\n"
         "- Nulgath Materials: Voidbuquerque\n"
         "- Wheel of Doom 1hr Boosts <:member:1392745711665283073>\n"
         "- Hearty Enh + Boosted Gear: Gaol Cell (Opt.)\n"
@@ -1772,17 +1776,17 @@ def dailies_message(include_weekly=False):
 
     if include_weekly:
         message += (
-            "\n\n## **Weeklies:**\n\n"
-            "**Insignias:**\n"
-            "• Nulgath Insignia – `/join ultranulgath`\n"
-            "• Dage Insignia – `/join ultradage`\n"
-            "• King Drago Insignia – `/join ultradrago`\n"
-            "• Champion Drakath Insignia – `/join championdrakath`\n"
-            "• Darkon Insignia – `/join ultradarkon`\n"
-            "• Malgor Insignia – `/join ultraspeaker`\n"
-            "• Gramiel the Graceful's Insignia – `/join ultragramiel`\n"
+            "\n\nWeeklies:\n\n"
+            "- Nulgath Insignia – /join ultranulgath\n"
+            "- Dage Insignia – /join ultradage\n"
+            "- King Drago Insignia – /join ultradrago\n"
+            "- Champion Drakath Insignia – /join championdrakath\n"
+            "- Darkon Insignia – /join ultradarkon\n"
+            "- Malgor Insignia – /join ultraspeaker\n"
+            "- Gramiel the Graceful's Insignia – /join ultragramiel"
         )
 
+    message += "```"
     return message
 
 # 🔧 !nn command
