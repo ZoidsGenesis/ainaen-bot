@@ -1798,13 +1798,18 @@ def dailies_embed(include_weekly=False):
     embed.set_footer(text="Type /nn for more commands")
     return embed
 
-# 🔧 !nn command
 @bot.command(name='nn')
 async def enhancement(ctx, *args):
     message = ' '.join(args).lower().strip()
 
     if message == "cruel":
         await ctx.send("**no drama. no fight. only love.**")
+        return
+
+    if message == "resetlist":
+        is_friday = datetime.datetime.utcnow().weekday() == 4
+        embed = dailies_embed(include_weekly=is_friday)
+        await ctx.send(embed=embed)
         return
 
     if not message:
@@ -1831,14 +1836,6 @@ async def enhancement(ctx, *args):
         reply = f"Sorry, I couldn't find enhancements for `{class_name}`. You dumbass bitch."
 
     await ctx.send(reply)
-
-
-# ✅ New !nn resetlist command (placed outside)
-@bot.command(name='resetlist')
-async def resetlist_command(ctx):
-    is_friday = datetime.datetime.utcnow().weekday() == 4
-    embed = dailies_embed(include_weekly=is_friday)
-    await ctx.send(embed=embed)
 
 # ⏰ Daily auto-post at 12:00 PM PH time
 async def daily_reset_task():
