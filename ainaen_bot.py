@@ -1731,6 +1731,7 @@ enhancements = {
 def dailies_embed(include_weekly=False):
     embed = discord.Embed(
         title="📅 Daily Reset" if not include_weekly else "📅 Daily + Weekly Reset",
+        description="Request for help in <#1355497319084331101>",
         color=discord.Color.blurple()
     )
     
@@ -1795,7 +1796,7 @@ def dailies_embed(include_weekly=False):
             inline=False
         )
 
-    embed.set_footer(text="Request for help in <#1355497319084331101>")
+    embed.set_footer(text="Type /nn for more commands")
     return embed
 
 # 🔧 !nn command
@@ -1846,7 +1847,7 @@ async def daily_reset_task():
 
     while not bot.is_closed():
         now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
-        target = now.replace(hour=1, minute=8, second=0, microsecond=0)
+        target = now.replace(hour=1, minute=12, second=0, microsecond=0)
 
         if now > target:
             target += datetime.timedelta(days=1)
