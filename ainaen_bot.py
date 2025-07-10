@@ -1826,7 +1826,7 @@ async def daily_reset_task():
         await asyncio.sleep(wait_time)
 
         if channel:
-            await channel.send(f"<@&{role_id}>\n{dailies_message()}")
+            await channel.send(f"<@&{role_id}> **DAILY RESET**\n\n{dailies_message()}")
 
 # 🔒 Run the bot
 bot.run(os.getenv("DISCORD_TOKEN"))
