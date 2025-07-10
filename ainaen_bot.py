@@ -1847,7 +1847,7 @@ async def daily_reset_task():
 
     while not bot.is_closed():
         now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
-        target = now.replace(hour=2, minute=34, second=0, microsecond=0)
+        target = now.replace(hour=2, minute=35, second=0, microsecond=0)
 
         if now > target:
             target += datetime.timedelta(days=1)
@@ -1859,7 +1859,7 @@ async def daily_reset_task():
         # ⏰ Auto-post at 12:00 PM PH time
 async def daily_reset_task():
     await bot.wait_until_ready()
-    channel_id = 1350109632256802878  # your channel ID
+    channel_id = 1355497319084331101  # your channel ID
     role_id = 1347486304492982374     # role to ping
     channel = bot.get_channel(channel_id)
 
