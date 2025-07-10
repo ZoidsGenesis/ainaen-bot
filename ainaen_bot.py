@@ -1738,14 +1738,14 @@ def dailies_embed(include_weekly=False):
     embed.add_field(
         name="🔥 Classes",
         value=(
-            "Pyro: Blaze Token\n"
-            "Cryo: Ice Token\n"
-            "Collector: Token of Collection *(Opt.)*\n"
-            "DKL: Shadow Skull <:member:1392745711665283073>\n"
-            "LoO: Lord of Order\n"
-            "SSG: Daily *(Opt.)*\n"
-            "FB: Crypto Token\n"
-            "VHL: Elders' Blood"
+            "**Pyro:** Blaze Token\n"
+            "**Cryo:** Ice Token\n"
+            "**Collector:** Token of Collection *(Opt.)*\n"
+            "**DKL:** Shadow Skull <:member:1392745711665283073>\n"
+            "**LoO:** Lord of Order\n"
+            "**SSG:** Daily *(Opt.)*\n"
+            "**FB:** Crypto Token\n"
+            "**VHL:** Elders' Blood"
         ),
         inline=False
     )
@@ -1754,14 +1754,14 @@ def dailies_embed(include_weekly=False):
         name="🧟‍♂️ Boss Dailies",
         value=(
             "**TimeInn Ultra Bosses:**\n"
-            "• UltraEzrajal – Insignia\n"
-            "• UltraWarden – Insignia\n"
-            "• UltraEngineer – Insignia\n"
-            "\nAstralShrine – Star of the Empyrean\n"
-            "Queen Iona – Lothian’s Lightning *(F2P)*\n"
-            "UltraTyndarius – Insignia\n"
-            "Apex Azalith – Divinas Voluntas *(Opt.)*\n"
-            "Templeshrine *(Opt.):*\n"
+            "• **UltraEzrajal** – Insignia\n"
+            "• **UltraWarden** – Insignia\n"
+            "• **UltraEngineer** – Insignia\n"
+            "\n**AstralShrine** – Star of the Empyrean\n"
+            "**Queen Iona** – Lothian’s Lightning *(F2P)*\n"
+            "**UltraTyndarius** – Insignia\n"
+            "**Apex Azalith** – Divinas Voluntas *(Opt.)*\n"
+            "**Templeshrine** *(Opt.):*\n"
             "  - Moonlight, Sunlight, Ecliptic Offering"
         ),
         inline=False
@@ -1770,13 +1770,13 @@ def dailies_embed(include_weekly=False):
     embed.add_field(
         name="📦 Useful Materials",
         value=(
-            "Friendship: Gifts + NPCs\n"
-            "BLoD / SDKA: Mine / Hardcore Metals <:member:1392745711665283073>\n"
-            "Drakath’s Armor: Dage’s Scroll\n"
-            "NSoD: Void Aura\n"
-            "Nulgath: Voidbuquerque\n"
-            "Wheel Boosts: 1hr <:member:1392745711665283073>\n"
-            "Legion Tokens: Daily Exercise 1–6"
+            "**Friendship:** Gifts + NPCs\n"
+            "**BLoD** / **SDKA:** Mine / Hardcore Metals <:member:1392745711665283073>\n"
+            "**Drakath’s Armor:** Dage’s Scroll\n"
+            "**NSoD:** Void Aura\n"
+            "**Nulgath:** Voidbuquerque\n"
+            "**Wheel Boosts:** 1hr <:member:1392745711665283073>\n"
+            "**Legion Tokens:** Daily Exercise 1–6"
         ),
         inline=False
     )
@@ -1785,13 +1785,13 @@ def dailies_embed(include_weekly=False):
         embed.add_field(
             name="🔁 Weeklies – Insignias",
             value=(
-                "• Nulgath – `/join ultranulgath`\n"
-                "• Dage – `/join ultradage`\n"
-                "• Drago – `/join ultradrago`\n"
-                "• Drakath – `/join championdrakath`\n"
-                "• Darkon – `/join ultradarkon`\n"
-                "• Malgor – `/join ultraspeaker`\n"
-                "• Gramiel – `/join ultragramiel`"
+                "• **Nulgath** – `/join ultranulgath`\n"
+                "• **Dage** – `/join ultradage`\n"
+                "• **Drago** – `/join ultradrago`\n"
+                "• **Drakath** – `/join championdrakath`\n"
+                "• **Darkon** – `/join ultradarkon`\n"
+                "• **Malgor** – `/join ultraspeaker`\n"
+                "• **Gramiel** – `/join ultragramiel`"
             ),
             inline=False
         )
