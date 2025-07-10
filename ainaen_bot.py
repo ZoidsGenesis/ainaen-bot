@@ -1728,62 +1728,76 @@ enhancements = {
 }
 
 
-def dailies_message(include_weekly=False, show_header=True):
-    header = "**DAILY RESET**"
-    if include_weekly:
-        header = "**DAILY + WEEKLY RESET**"
+def dailies_embed(include_weekly=False):
+    embed = discord.Embed(
+        title="📅 Daily Reset" if not include_weekly else "📅 Daily + Weekly Reset",
+        color=discord.Color.blurple()
+    )
+    
+    embed.add_field(
+        name="🔥 Classes",
+        value=(
+            "🌋 Pyro: Blaze Token\n"
+            "❄️ Cryo: Ice Token\n"
+            "🎯 Collector: Token of Collection *(Opt.)*\n"
+            "💀 DKL: Shadow Skull <:member:1392745711665283073>\n"
+            "⚖️ LoO: Lord of Order\n"
+            "🔁 SSG: Daily *(Opt.)*\n"
+            "🪙 FB: Crypto Token\n"
+            "🩸 VHL: Elders' Blood"
+        ),
+        inline=False
+    )
 
-    message = f"{header}\n\n" if show_header else ""
-    message += (
-        "## **Dailies:**\n\n"
-        "### **Classes:**\n"
-        "- Pyro Class: Blaze Token\n"
-        "- Cryo Class: Ice Token\n"
-        "- The Collector Class: Token of Collection (Opt.)\n"
-        "- DKL Class: Shadow Skull <:member:1392745711665283073>\n"
-        "- LoO Class: Lord of Order Daily\n"
-        "- SSG Class: SSG Daily (Opt.)\n"
-        "- FB Class: Crypto Token\n"
-        "- VHL Class: Elders' Blood\n\n"
-        "### **Boss Dailies:**\n"
-        "- TimeInn Ultra Bosses (Exalted Apotheosis):\n"
-        "  - UltraEzrajal: Insignia\n"
-        "  - UltraWarden: Insignia\n"
-        "  - UltraEngineer: Insignia\n"
-        "- AstralShrine: Star of the Empyrean\n"
-        "- Queen Iona: Lothian's Lightning (F2P)\n"
-        "- UltraTyndarius: Insignia\n"
-        "- Apex Azalith: Divinas Voluntas (Opt.)\n"
-        "- Templeshrine (Opt.):\n"
-        "  - Sliver of Moonlight\n"
-        "  - Sliver of Sunlight\n"
-        "  - Ecliptic Offering\n\n"
-        "### **Useful Materials:**\n"
-        "- Friendship: Gifts + NPCs\n"
-        "- BLoD + Blacksmithing: Mine Crafting\n"
-        "- SDKA + Blacksmithing: Hard Core Metals <:member:1392745711665283073>\n"
-        "- Free Daily Boost <:member:1392745711665283073>\n"
-        "- NSoD: Void Aura \n"
-        "- Nulgath Materials: Voidbuquerque\n"
-        "- Wheel of Doom 1hr Boosts <:member:1392745711665283073>\n"
-        "- Hearty Enh + Boosted Gear: Gaol Cell (Opt.)\n"
-        "- Legion Tokens / Soul Sand: Daily Exercise 1-6"
+    embed.add_field(
+        name="🧠 Boss Dailies",
+        value=(
+            "**TimeInn Ultra Bosses:**\n"
+            "• UltraEzrajal – Insignia\n"
+            "• UltraWarden – Insignia\n"
+            "• UltraEngineer – Insignia\n"
+            "\n🌌 AstralShrine – Star of the Empyrean\n"
+            "⚡ Queen Iona – Lothian’s Lightning *(F2P)*\n"
+            "🔥 UltraTyndarius – Insignia\n"
+            "✨ Apex Azalith – Divinas Voluntas *(Opt.)*\n"
+            "🌕 Templeshrine *(Opt.):*\n"
+            "  - Moonlight, Sunlight, Ecliptic Offering"
+        ),
+        inline=False
+    )
+
+    embed.add_field(
+        name="📦 Useful Materials",
+        value=(
+            "🎁 Friendship: Gifts + NPCs\n"
+            "⛏️ BLoD / SDKA: Mine / Hardcore Metals <:member:1392745711665283073>\n"
+            "🧾 Drakath’s Armor: Dage’s Scroll\n"
+            "🌑 NSoD: Void Aura\n"
+            "🌍 Nulgath: Voidbuquerque\n"
+            "🎡 Wheel Boosts: 1hr <:member:1392745711665283073>\n"
+            "🏋️‍♂️ Legion Tokens: Daily Exercise 1–6"
+        ),
+        inline=False
     )
 
     if include_weekly:
-        message += (
-            "\n\n## **Weeklies:**\n\n"
-            "**Insignias:**\n"
-            "• Nulgath Insignia – `/join ultranulgath`\n"
-            "• Dage Insignia – `/join ultradage`\n"
-            "• King Drago Insignia – `/join ultradrago`\n"
-            "• Champion Drakath Insignia – `/join championdrakath`\n"
-            "• Darkon Insignia – `/join ultradarkon`\n"
-            "• Malgor Insignia – `/join ultraspeaker`\n"
-            "• Gramiel the Graceful's Insignia – `/join ultragramiel`\n"
+        embed.add_field(
+            name="🗓️ Weeklies – Insignias",
+            value=(
+                "• Nulgath – `/join ultranulgath`\n"
+                "• Dage – `/join ultradage`\n"
+                "• Drago – `/join ultradrago`\n"
+                "• Drakath – `/join championdrakath`\n"
+                "• Darkon – `/join ultradarkon`\n"
+                "• Malgor – `/join ultraspeaker`\n"
+                "• Gramiel – `/join ultragramiel`"
+            ),
+            inline=False
         )
 
-    return message
+    embed.set_footer(text="Type /nn for more commands")
+
+    return embed
 
 # 🔧 !nn command
 @bot.command(name='nn')
@@ -1843,7 +1857,10 @@ async def daily_reset_task():
 
         is_friday = datetime.datetime.utcnow().weekday() == 4  # Friday = 4
         if channel:
-            await channel.send(f"<@&{role_id}>\n{dailies_message(include_weekly=is_friday)}")
+            await channel.send(
+                content=f"<@&{role_id}>",
+                embed=dailies_embed(include_weekly=is_friday)
+)
 
 # 🔒 Run bot
 bot.run(os.getenv("DISCORD_TOKEN"))
