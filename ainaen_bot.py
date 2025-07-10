@@ -1738,10 +1738,10 @@ def dailies_embed(include_weekly=False):
         name="🔥 Classes",
         value=(
             "Pyro: Blaze Token\n"
-            "❄ Cryo: Ice Token\n"
+            "Cryo: Ice Token\n"
             "Collector: Token of Collection *(Opt.)*\n"
             "DKL: Shadow Skull <:member:1392745711665283073>\n"
-            "⚖ LoO: Lord of Order\n"
+            "LoO: Lord of Order\n"
             "SSG: Daily *(Opt.)*\n"
             "FB: Crypto Token\n"
             "VHL: Elders' Blood"
@@ -1795,7 +1795,7 @@ def dailies_embed(include_weekly=False):
             inline=False
         )
 
-    embed.set_footer(text="Type /nn for more commands")
+    embed.set_footer(text="Request for help in <#1355497319084331101>")
     return embed
 
 # 🔧 !nn command
@@ -1846,7 +1846,7 @@ async def daily_reset_task():
 
     while not bot.is_closed():
         now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
-        target = now.replace(hour=0, minute=59, second=0, microsecond=0)
+        target = now.replace(hour=1, minute=8, second=0, microsecond=0)
 
         if now > target:
             target += datetime.timedelta(days=1)
