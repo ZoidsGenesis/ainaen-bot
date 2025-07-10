@@ -1841,14 +1841,14 @@ async def enhancement(ctx, *args):
         # ⏰ Auto-post at 12:00 PM PH time
 async def daily_reset_task():
     await bot.wait_until_ready()
-    channel_id = 1355497319084331101  # your channel ID
+    channel_id = 1350109632256802878  # your channel ID
     role_id = 1347486304492982374     # role to ping
     channel = bot.get_channel(channel_id)
 
     while not bot.is_closed():
         # Use PH time (UTC+8) for all calculations
         now_ph = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
-        target = now_ph.replace(hour=2, minute=52, second=0, microsecond=0)
+        target = now_ph.replace(hour=12, minute=0, second=0, microsecond=0)
 
         if now_ph > target:
             target += datetime.timedelta(days=1)
