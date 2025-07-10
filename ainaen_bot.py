@@ -1731,7 +1731,7 @@ enhancements = {
 def dailies_embed(include_weekly=False):
     embed = discord.Embed(
         title="📅 Daily Reset" if not include_weekly else "📅 Daily + Weekly Reset",
-        description="Request for help in <#1355497319084331101>",
+        description="Request for help in <#1347562297937236112>",
         color=discord.Color.blurple()
     )
     
@@ -1841,7 +1841,7 @@ async def enhancement(ctx, *args):
 # ⏰ Auto-post at 12:00 PM PH time
 async def daily_reset_task():
     await bot.wait_until_ready()
-    channel_id = 1355497319084331101  # your channel ID
+    channel_id = 1350109632256802878  # your channel ID
     role_id = 1347486304492982374     # role to ping
     channel = bot.get_channel(channel_id)
 
