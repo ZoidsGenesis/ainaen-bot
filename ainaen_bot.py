@@ -1856,11 +1856,56 @@ async def daily_reset_task():
         print(f"⏳ waiting {wait_time / 60:.2f} minutes until next dailies auto-post...")
         await asyncio.sleep(wait_time)
 
-        is_friday = datetime.datetime.utcnow().weekday() == 4
-        embed = dailies_embed(include_weekly=is_friday)
+        # ⏰ Auto-post at 12:00 PM PH time
+async def daily_reset_task():
+    await bot.wait_until_ready()
+    channel_id = 1350109632256802878  # your channel ID
+    role_id = 1347486304492982374     # role to ping
+    channel = bot.get_channel(channel_id)
 
+    while not bot.is_closed():
+        now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
+        target = now.replace(hour=12, minute=0, second=0, microsecond=0)
+
+        if now > target:
+            target += datetime.timedelta(days=1)
+
+        wait_time = (target - now).total_seconds()
+        print(f"⏳ waiting {wait_time / 60:.2f} minutes until next dailies auto-post...")
+        await asyncio.sleep(wait_time)
+
+        # Refresh the time after sleep
+        current = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+        is_friday = current.weekday() == 4
+
+        # Send Daily Message
+        embed_daily = dailies_embed(include_weekly=False)
         if channel:
-            await channel.send(f"<@&{role_id}>", embed=embed)
+            await channel.send(f"<@&{role_id}>", embed=embed_daily)
+
+        # Send Weekly Message if Friday
+        if is_friday:
+            embed_weekly = discord.Embed(
+                title="🔁 Weekly Reset – Insignias",
+                description="Request for help in <#1347562297937236112>",
+                color=discord.Color.green()
+            )
+            embed_weekly.add_field(
+                name="Bosses & Commands",
+                value=(
+                    "• **Nulgath** – `/join ultranulgath`\n"
+                    "• **Dage** – `/join ultradage`\n"
+                    "• **Drago** – `/join ultradrago`\n"
+                    "• **Drakath** – `/join championdrakath`\n"
+                    "• **Darkon** – `/join ultradarkon`\n"
+                    "• **Malgor** – `/join ultraspeaker`\n"
+                    "• **Gramiel** – `/join ultragramiel`"
+                ),
+                inline=False
+            )
+            embed_weekly.set_footer(text="Type /nn for more commands")
+            await channel.send(embed=embed_weekly)
+
 
 # 🔒 Run bot
 bot.run(os.getenv("DISCORD_TOKEN"))
