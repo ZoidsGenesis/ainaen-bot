@@ -1846,7 +1846,7 @@ async def daily_reset_task():
 
     while not bot.is_closed():
         now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
-        target = now.replace(hour=, minute=52, second=0, microsecond=0)
+        target = now.replace(hour=0, minute=52, second=0, microsecond=0)
 
         if now > target:
             target += datetime.timedelta(days=1)
