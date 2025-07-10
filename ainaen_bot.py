@@ -1728,8 +1728,13 @@ enhancements = {
 }
 
 
-def dailies_message():
-    return (
+def dailies_message(include_weekly=False):
+    header = "**DAILY RESET**"
+    if include_weekly:
+        header = "**DAILY + WEEKLY RESET**"
+
+    message = (
+        f"{header}\n\n"
         "## **Dailies:**\n\n"
         "### **Classes:**\n"
         "- Pyro Class: Blaze Token\n"
@@ -1769,13 +1774,28 @@ def dailies_message():
         "- Legion Tokens / Soul Sand: Daily Exercise 1-6"
     )
 
-# 🎮 !nn command
+    if include_weekly:
+        message += (
+            "\n\n## **Weeklies:**\n\n"
+            "**Insignias:**\n"
+            "• Nulgath Insignia – `/join ultranulgath`\n"
+            "• Dage Insignia – `/join ultradage`\n"
+            "• King Drago Insignia – `/join ultradrago`\n"
+            "• Champion Drakath Insignia – `/join championdrakath`\n"
+            "• Darkon Insignia – `/join ultradarkon`\n"
+            "• Malgor Insignia – `/join ultraspeaker`\n"
+            "• Gramiel the Graceful's Insignia – `/join ultragramiel`\n"
+        )
+
+    return message
+
+# 🔧 !nn command
 @bot.command(name='nn')
 async def enhancement(ctx, *args):
     message = ' '.join(args).lower().strip()
 
     if message == "cruel":
-        await ctx.send("**no drama. no fight. only love. OR ELSE MUTE?????**")
+        await ctx.send("**no drama. no fight. only love.**")
         return
 
     if message == "dailies":
@@ -1825,8 +1845,9 @@ async def daily_reset_task():
         print(f"⏳ waiting {wait_time / 60:.2f} minutes until next dailies auto-post...")
         await asyncio.sleep(wait_time)
 
+        is_friday = datetime.datetime.utcnow().weekday() == 4  # Friday = 4
         if channel:
-            await channel.send(f"<@&{role_id}> **DAILY RESET**\n\n{dailies_message()}")
+            await channel.send(f"<@&{role_id}>\n{dailies_message(include_weekly=is_friday)}")
 
-# 🔒 Run the bot
+# 🔒 Run bot
 bot.run(os.getenv("DISCORD_TOKEN"))
