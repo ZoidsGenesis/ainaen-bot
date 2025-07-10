@@ -1846,19 +1846,20 @@ async def daily_reset_task():
     channel = bot.get_channel(channel_id)
 
     while not bot.is_closed():
-        now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
-        target = now.replace(hour=2, minute=40, second=0, microsecond=0)
+        # Use PH time (UTC+8) for all calculations
+        now_ph = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+        target = now_ph.replace(hour=2, minute=52, second=0, microsecond=0)
 
-        if now > target:
+        if now_ph > target:
             target += datetime.timedelta(days=1)
 
-        wait_time = (target - now).total_seconds()
+        wait_time = (target - now_ph).total_seconds()
         print(f"⏳ waiting {wait_time / 60:.2f} minutes until next dailies auto-post...")
         await asyncio.sleep(wait_time)
 
-        # Refresh the time after sleep
-        current = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
-        is_friday = current.weekday() == 4
+        # Recalculate current PH time after sleep
+        now_ph = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+        is_friday = now_ph.weekday() == 4  # Friday = 4
 
         # Send Daily Message
         embed_daily = dailies_embed(include_weekly=False)
@@ -1868,20 +1869,20 @@ async def daily_reset_task():
         # Send Weekly Message if Friday
         if is_friday:
             embed_weekly = discord.Embed(
-                title="🔁 Weekly Reset – Insignias",
+                title="🔁 Weekly Reset",
                 description="Request for help in <#1347562297937236112>",
                 color=discord.Color.green()
             )
             embed_weekly.add_field(
-                name="Bosses & Commands",
+                name="Ultra Bosses",
                 value=(
-                    "• **Nulgath** – `/join ultranulgath`\n"
-                    "• **Dage** – `/join ultradage`\n"
-                    "• **Drago** – `/join ultradrago`\n"
-                    "• **Drakath** – `/join championdrakath`\n"
-                    "• **Darkon** – `/join ultradarkon`\n"
-                    "• **Malgor** – `/join ultraspeaker`\n"
-                    "• **Gramiel** – `/join ultragramiel`"
+                    "• **Nulgath Insignia** – `/join ultranulgath`\n"
+                    "• **Dage Insignia** – `/join ultradage`\n"
+                    "• **King Drago Insignia** – `/join ultradrago`\n"
+                    "• **Champion Drakath Insignia** – `/join championdrakath`\n"
+                    "• **Darkon Insignia** – `/join ultradarkon`\n"
+                    "• **Malgor Insignia** – `/join ultraspeaker`\n"
+                    "• **Gramiel the Graceful Insignia** – `/join ultragramiel`"
                 ),
                 inline=False
             )
