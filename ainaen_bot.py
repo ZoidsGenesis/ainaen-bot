@@ -1737,30 +1737,30 @@ def dailies_embed(include_weekly=False):
     embed.add_field(
         name="🔥 Classes",
         value=(
-            "🌋 Pyro: Blaze Token\n"
-            "❄️ Cryo: Ice Token\n"
-            "🎯 Collector: Token of Collection *(Opt.)*\n"
-            "💀 DKL: Shadow Skull <:member:1392745711665283073>\n"
-            "⚖️ LoO: Lord of Order\n"
-            "🔁 SSG: Daily *(Opt.)*\n"
-            "🪙 FB: Crypto Token\n"
-            "🩸 VHL: Elders' Blood"
+            "Pyro: Blaze Token\n"
+            "❄ Cryo: Ice Token\n"
+            "Collector: Token of Collection *(Opt.)*\n"
+            "DKL: Shadow Skull <:member:1392745711665283073>\n"
+            "⚖ LoO: Lord of Order\n"
+            "SSG: Daily *(Opt.)*\n"
+            "FB: Crypto Token\n"
+            "VHL: Elders' Blood"
         ),
         inline=False
     )
 
     embed.add_field(
-        name="🧠 Boss Dailies",
+        name="🧟‍♂️ Boss Dailies",
         value=(
             "**TimeInn Ultra Bosses:**\n"
             "• UltraEzrajal – Insignia\n"
             "• UltraWarden – Insignia\n"
             "• UltraEngineer – Insignia\n"
-            "\n🌌 AstralShrine – Star of the Empyrean\n"
-            "⚡ Queen Iona – Lothian’s Lightning *(F2P)*\n"
-            "🔥 UltraTyndarius – Insignia\n"
-            "✨ Apex Azalith – Divinas Voluntas *(Opt.)*\n"
-            "🌕 Templeshrine *(Opt.):*\n"
+            "\nAstralShrine – Star of the Empyrean\n"
+            "Queen Iona – Lothian’s Lightning *(F2P)*\n"
+            "UltraTyndarius – Insignia\n"
+            "Apex Azalith – Divinas Voluntas *(Opt.)*\n"
+            "Templeshrine *(Opt.):*\n"
             "  - Moonlight, Sunlight, Ecliptic Offering"
         ),
         inline=False
@@ -1769,20 +1769,20 @@ def dailies_embed(include_weekly=False):
     embed.add_field(
         name="📦 Useful Materials",
         value=(
-            "🎁 Friendship: Gifts + NPCs\n"
-            "⛏️ BLoD / SDKA: Mine / Hardcore Metals <:member:1392745711665283073>\n"
-            "🧾 Drakath’s Armor: Dage’s Scroll\n"
-            "🌑 NSoD: Void Aura\n"
-            "🌍 Nulgath: Voidbuquerque\n"
-            "🎡 Wheel Boosts: 1hr <:member:1392745711665283073>\n"
-            "🏋️‍♂️ Legion Tokens: Daily Exercise 1–6"
+            "Friendship: Gifts + NPCs\n"
+            "BLoD / SDKA: Mine / Hardcore Metals <:member:1392745711665283073>\n"
+            "Drakath’s Armor: Dage’s Scroll\n"
+            "NSoD: Void Aura\n"
+            "Nulgath: Voidbuquerque\n"
+            "Wheel Boosts: 1hr <:member:1392745711665283073>\n"
+            "Legion Tokens: Daily Exercise 1–6"
         ),
         inline=False
     )
 
     if include_weekly:
         embed.add_field(
-            name="🗓️ Weeklies – Insignias",
+            name="🔁 Weeklies – Insignias",
             value=(
                 "• Nulgath – `/join ultranulgath`\n"
                 "• Dage – `/join ultradage`\n"
@@ -1796,7 +1796,6 @@ def dailies_embed(include_weekly=False):
         )
 
     embed.set_footer(text="Type /nn for more commands")
-
     return embed
 
 # 🔧 !nn command
@@ -1806,10 +1805,6 @@ async def enhancement(ctx, *args):
 
     if message == "cruel":
         await ctx.send("**no drama. no fight. only love.**")
-        return
-
-    if message == "dailies":
-        await ctx.send(dailies_message(show_header=False))
         return
 
     if not message:
@@ -1837,16 +1832,24 @@ async def enhancement(ctx, *args):
 
     await ctx.send(reply)
 
+
+# ✅ New !nn resetlist command (placed outside)
+@bot.command(name='resetlist')
+async def resetlist_command(ctx):
+    is_friday = datetime.datetime.utcnow().weekday() == 4
+    embed = dailies_embed(include_weekly=is_friday)
+    await ctx.send(embed=embed)
+
 # ⏰ Daily auto-post at 12:00 PM PH time
 async def daily_reset_task():
     await bot.wait_until_ready()
-    channel_id = 1355497319084331101  # your channel ID
+    channel_id = 1350109632256802878  # your channel ID
     role_id = 1347486304492982374     # role to ping
     channel = bot.get_channel(channel_id)
 
     while not bot.is_closed():
         now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)  # PH time
-        target = now.replace(hour=0, minute=19, second=0, microsecond=0)
+        target = now.replace(hour=12, minute=0, second=0, microsecond=0)
 
         if now > target:
             target += datetime.timedelta(days=1)
@@ -1856,11 +1859,43 @@ async def daily_reset_task():
         await asyncio.sleep(wait_time)
 
         is_friday = datetime.datetime.utcnow().weekday() == 4  # Friday = 4
+
+        embed = discord.Embed(
+            title="Daily Reset 📅",
+            color=discord.Color.blue()
+        )
+
+        if is_friday:
+            embed.description = (
+                "```markdown\n"
+                "📅 Daily Reset                    🔁 Weeklies\n"
+                "──────────────────────────       ──────────────────────\n"
+                "🔥 Pyro: Blaze Token             • /join ultranulgath\n"
+                "❄️ Cryo: Ice Token              • /join ultradage\n"
+                "💀 DKL: Shadow Skull            • /join ultradrago\n"
+                "⚡ Queen Iona – (F2P)           • /join championdrakath\n"
+                "🔥 UltraTyndarius – Insignia    • /join ultradarkon\n"
+                "🎁 Friendship: Gifts + NPCs     • /join ultraspeaker\n"
+                "⚒️ BLoD / SDKA: Mine Crafting   • /join ultragramiel\n"
+                "```"
+            )
+        else:
+            embed.description = (
+                "```markdown\n"
+                "📅 Daily Reset\n"
+                "──────────────────────────\n"
+                "🔥 Pyro: Blaze Token\n"
+                "❄️ Cryo: Ice Token\n"
+                "💀 DKL: Shadow Skull\n"
+                "⚡ Queen Iona – (F2P)\n"
+                "🔥 UltraTyndarius – Insignia\n"
+                "🎁 Friendship: Gifts + NPCs\n"
+                "⚒️ BLoD / SDKA: Mine Crafting\n"
+                "```"
+            )
+
         if channel:
-            await channel.send(
-                content=f"<@&{role_id}>",
-                embed=dailies_embed(include_weekly=is_friday)
-)
+            await channel.send(f"<@&{role_id}>", embed=embed)
 
 # 🔒 Run bot
 bot.run(os.getenv("DISCORD_TOKEN"))
