@@ -1826,18 +1826,23 @@ async def enhancement(ctx, *args):
     data = enhancements.get(class_name)
 
     if data:
-        reply = (
-            f"**Enhancements for {class_name.title()}**\n"
-            f"Purpose: {data['purpose']}\n"
-            f"Class: {data['class']}\n"
-            f"Weapon: {data['weapon']}\n"
-            f"Helm: {data['helm']}\n"
-            f"Cape: {data['cape']}"
+        embed = discord.Embed(
+            title=f"**Enhancements for {class_name.title()}**",
+            color=discord.Color.blue()
         )
+        embed.add_field(name="Purpose", value=data['purpose'], inline=False)
+        embed.add_field(name="Class", value=data['class'], inline=False)
+        embed.add_field(name="Weapon", value=data['weapon'], inline=False)
+        embed.add_field(name="Helm", value=data['helm'], inline=False)
+        embed.add_field(name="Cape", value=data['cape'], inline=False)
     else:
-        reply = f"Sorry, I couldn't find enhancements for `{class_name}`. You dumbass bitch."
+        embed = discord.Embed(
+            title="Error",
+            description=f"Sorry, I couldn't find enhancements for `{class_name}`. You dumbass bitch.",
+            color=discord.Color.red()
+        )
 
-    await ctx.send(reply)
+    await ctx.send(embed=embed)
 
         # ⏰ Auto-post at 12:00 PM PH time
 async def daily_reset_task():
