@@ -1739,7 +1739,7 @@ def dailies_embed(include_weekly=False):
 
     # Organizing Classes
     embed.add_field(
-        name="Classes",
+        name="<:red:1393037160516550727> Classes",
         value=(
             "**Pyro:** Blaze Token\n"
             "**Cryo:** Ice Token\n"
@@ -1755,7 +1755,7 @@ def dailies_embed(include_weekly=False):
 
     # Organizing Boss Dailies
     embed.add_field(
-        name="Boss Dailies",
+        name="<:red1:1393037179210698792> Boss Dailies",
         value=(
             "**TimeInn Ultra Bosses:**\n"
             "• **UltraEzrajal** – Insignia\n"
@@ -1773,7 +1773,7 @@ def dailies_embed(include_weekly=False):
 
     # Organizing Useful Materials
     embed.add_field(
-        name="Useful Materials",
+        name="<:red1:1393037179210698792> Useful Materials",
         value=(
             "**Friendship:** Gifts + NPCs\n"
             "**BLoD / SDKA:** Mine / Hardcore Metals <:member:1392745711665283073>\n"
@@ -1788,7 +1788,7 @@ def dailies_embed(include_weekly=False):
 
     if include_weekly:
         embed.add_field(
-            name="Weeklies – Insignias",
+            name="<:NUUU:1393035825381642472> Weeklies – Insignias",
             value=(
                 "• **Nulgath** – `/join ultranulgath`\n"
                 "• **Dage** – `/join ultradage`\n"
