@@ -1730,14 +1730,14 @@ enhancements = {
 
 def dailies_embed(include_weekly=False):
     embed = discord.Embed(
-        title="📅 Daily Reset" if not include_weekly else "📅 Daily + Weekly Reset",
+        title="<:alert:1393035801008541717> Daily Reset" if not include_weekly else "📅 Daily + Weekly Reset",
         description="Request for help in <#1347562297937236112>",
         color=discord.Color.blurple()
     )
     
     embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")
     embed.add_field(
-        name="🔥 Classes",
+        name="<:red:1393037160516550727> Classes",
         value=(
             "**Pyro:** Blaze Token\n"
             "**Cryo:** Ice Token\n"
@@ -1752,7 +1752,7 @@ def dailies_embed(include_weekly=False):
     )
 
     embed.add_field(
-        name="🧟‍♂️ Boss Dailies",
+        name="<:red1:1393037179210698792> Boss Dailies",
         value=(
             "**TimeInn Ultra Bosses:**\n"
             "• **UltraEzrajal** – Insignia\n"
@@ -1769,7 +1769,7 @@ def dailies_embed(include_weekly=False):
     )
 
     embed.add_field(
-        name="📦 Useful Materials",
+        name="<:red1:1393037179210698792> Useful Materials",
         value=(
             "**Friendship:** Gifts + NPCs\n"
             "**BLoD** / **SDKA:** Mine / Hardcore Metals <:member:1392745711665283073>\n"
@@ -1784,7 +1784,7 @@ def dailies_embed(include_weekly=False):
 
     if include_weekly:
         embed.add_field(
-            name="🔁 Weeklies – Insignias",
+            name="<:NUUU:1393035825381642472> Weeklies – Insignias",
             value=(
                 "• **Nulgath** – `/join ultranulgath`\n"
                 "• **Dage** – `/join ultradage`\n"
@@ -1870,7 +1870,7 @@ async def daily_reset_task():
         # Send Weekly Message if Friday
         if is_friday:
             embed_weekly = discord.Embed(
-                title="🔁 Weekly Reset",
+                title="<:alert:1393035801008541717> Weekly Reset",
                 description="Request for help in <#1347562297937236112>",
                 color=discord.Color.green()
             )
