@@ -17,7 +17,7 @@ async def nn_help(interaction: discord.Interaction):
         "- `!nn resetlist` – shows daily and weekly main todo list.\n"
         "- `!nn potionguide` – shows basic potions guide.\n"
         "- `!nn cruel` – dont prompt it. only for softies.\n"
-        "Got suggestions? Ping <@1052580900497534999> anytime!",
+        "*Help us improve — share your suggestions with <@1052580900497534999>!*",
         ephemeral=True
     )
 
