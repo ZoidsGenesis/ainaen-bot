@@ -1730,9 +1730,9 @@ enhancements = {
 
 def dailies_embed(include_weekly=False):
     embed = discord.Embed(
-        title="<:alert:1393035801008541717> Daily Reset" if not include_weekly else "📅 Daily + Weekly Reset",
+        title="<:alert:1393035801008541717> Daily Reset" if not include_weekly else "<:alert:1393035801008541717> Daily + Weekly Reset",
         description="Request for help in <#1347562297937236112>",
-        color=discord.Color.blurple()
+        color=discord.Color.from_rgb(128, 0, 0)
     )
     
     embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")
@@ -1872,7 +1872,7 @@ async def daily_reset_task():
             embed_weekly = discord.Embed(
                 title="<:alert:1393035801008541717> Weekly Reset",
                 description="Request for help in <#1347562297937236112>",
-                color=discord.Color.green()
+                color=discord.Color.from_rgb(128, 0, 0)
             )
             embed_weekly.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")
             embed_weekly.add_field(
