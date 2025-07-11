@@ -14,7 +14,7 @@ async def nn_help(interaction: discord.Interaction):
     await interaction.response.send_message(
         "**🧠 cruel the best guild – command list:**\n"
         "- `!nn enh for <class name>` – enhancement builds\n"
-        "- `!nn resetlist` – shows daily and weekly main todo list?\n"
+        "- `!nn resetlist` – shows daily and weekly main todo list.\n"
         "- `!nn cruel` – dont prompt it. only for softies",
         ephemeral=True
     )
@@ -1855,7 +1855,6 @@ async def enhancement(ctx, *args):
 async def daily_reset_task():
     await bot.wait_until_ready()
     channel_id = 1350109632256802878  # your channel ID
-    role_id = 1347486304492982374     # role to ping
     channel = bot.get_channel(channel_id)
 
     while not bot.is_closed():
@@ -1877,7 +1876,7 @@ async def daily_reset_task():
         # Send Daily Message
         embed_daily = dailies_embed(include_weekly=False)
         if channel:
-            await channel.send(f"<@&{role_id}>", embed=embed_daily)
+            await channel.send(embed=embed_daily)
 
         # Send Weekly Message if Friday
         if is_friday:
