@@ -1804,26 +1804,6 @@ def dailies_embed(include_weekly=False):
     embed.set_footer(text="Type /nn for more commands")
     return embed
 
-    )
-
-    if include_weekly:
-        embed.add_field(
-            name="<:NUUU:1393035825381642472> Weeklies – Insignias",
-            value=(
-                "• **Nulgath** – `/join ultranulgath`\n"
-                "• **Dage** – `/join ultradage`\n"
-                "• **Drago** – `/join ultradrago`\n"
-                "• **Drakath** – `/join championdrakath`\n"
-                "• **Darkon** – `/join ultradarkon`\n"
-                "• **Malgor** – `/join ultraspeaker`\n"
-                "• **Gramiel** – `/join ultragramiel`"
-            ),
-            inline=False
-        )
-
-    embed.set_footer(text="Type /nn for more commands")
-    return embed
-
 # 🔧 !nn command
 @bot.command(name='nn')
 async def enhancement(ctx, *args):
