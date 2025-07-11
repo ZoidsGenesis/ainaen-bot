@@ -1828,21 +1828,24 @@ async def enhancement(ctx, *args):
     if data:
         embed = discord.Embed(
             title=f"**Enhancements for {class_name.title()}**",
-            color=discord.Color.blue()
+            color=discord.Color.from_rgb(128, 0, 0)
         )
         embed.add_field(name="Purpose", value=data['purpose'], inline=False)
         embed.add_field(name="Class", value=data['class'], inline=False)
         embed.add_field(name="Weapon", value=data['weapon'], inline=False)
         embed.add_field(name="Helm", value=data['helm'], inline=False)
         embed.add_field(name="Cape", value=data['cape'], inline=False)
+        embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")  # Add the logo here
     else:
         embed = discord.Embed(
             title="Error",
             description=f"Sorry, I couldn't find enhancements for `{class_name}`. You dumbass bitch.",
             color=discord.Color.red()
         )
+        embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")  # Add the logo here as well
 
     await ctx.send(embed=embed)
+
 
         # ⏰ Auto-post at 12:00 PM PH time
 async def daily_reset_task():
