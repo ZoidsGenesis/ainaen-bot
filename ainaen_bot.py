@@ -332,6 +332,13 @@ enhancements = {
         "helm": "Forge",
         "cape": "Vainglory"
     },
+    "chrono shadowhunter": {
+        "purpose": "Soloer (DPS), Hybrid Support (Debuffs)",
+        "class": "Luck",
+        "weapon": "Ravenous, Arcana's Concerto",
+        "helm": "Vim",
+        "cape": "Lament"
+    },
     "chrono shadowslayer": {
         "purpose": "Soloer (DPS), Hybrid Support (Debuffs)",
         "class": "Luck",
@@ -1584,6 +1591,27 @@ enhancements = {
         "weapon": "Valiance, Praxis",
         "helm": "Pneuma, Wizard",
         "cape": "Vainglory, Avarice"
+    },
+    "obsidian paladin chronomancer": {
+        "purpose": "Support (Buffs/Debuffs/Heals",
+        "class": "Healer",
+        "weapon": "Mana Vamp, Valiance",
+        "helm": "Healer, Hearty",
+        "cape": "Absolution"
+    },
+    "paladin chronomancer": {
+        "purpose": "Support (Buffs/Debuffs/Heals",
+        "class": "Healer",
+        "weapon": "Mana Vamp, Valiance",
+        "helm": "Healer, Hearty",
+        "cape": "Absolution"
+    },
+    "frostval barbarian": {
+        "purpose": "Support (Buffs/Debuffs/Heals",
+        "class": "Fighter",
+        "weapon": "Arcana's Concerto, Awe Blast",
+        "helm": "Fighter",
+        "cape": "Absolution"
     },
     "lightcaster": {
         "purpose": "Bossfighter (Glass Cannon), Hybrid Support (Buffs/Nukes/Heals)",
