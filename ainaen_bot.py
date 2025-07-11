@@ -15,6 +15,7 @@ async def nn_help(interaction: discord.Interaction):
         "**🧠 cruel the best guild – command list:**\n"
         "- `!nn enh for <class name>` – enhancement builds\n"
         "- `!nn resetlist` – shows daily and weekly main todo list.\n"
+        "- `!nn potionguide` – shows basic potions guide.\n"
         "- `!nn cruel` – dont prompt it. only for softies",
         ephemeral=True
     )
