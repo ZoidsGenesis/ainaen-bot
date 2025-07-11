@@ -1870,6 +1870,10 @@ async def enhancement(ctx, *args):
         await ctx.send(embed=embed)
         return
 
+    if message == "potionguide":  # Add this line to handle potionguide
+        await potion_guide(ctx)  # Call the potion_guide function directly
+        return
+
     if not message:
         await ctx.send("Type `/nn` to see a list of available commands.")
         return
