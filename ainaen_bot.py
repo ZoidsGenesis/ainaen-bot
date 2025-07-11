@@ -1849,7 +1849,7 @@ async def enhancement(ctx, *args):
 
     if message == "potionguide":
         embed = discord.Embed(
-            title="GENERAL POTIONS GUIDE\nTreat this list as a BASELINE",
+            title="GENERAL POTIONS GUIDE\n\nTreat this list as a BASELINE",
             color=discord.Color.from_rgb(128, 0, 0)
         )
         embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")
