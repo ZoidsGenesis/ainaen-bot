@@ -1594,14 +1594,14 @@ enhancements = {
         "cape": "Vainglory, Avarice"
     },
     "obsidian paladin chronomancer": {
-        "purpose": "Support (Buffs/Debuffs/Heals",
+        "purpose": "Support (Buffs/Debuffs/Heals)",
         "class": "Healer",
         "weapon": "Mana Vamp, Valiance",
         "helm": "Healer, Hearty",
         "cape": "Absolution"
     },
     "paladin chronomancer": {
-        "purpose": "Support (Buffs/Debuffs/Heals",
+        "purpose": "Support (Buffs/Debuffs/Heals)",
         "class": "Healer",
         "weapon": "Mana Vamp, Valiance",
         "helm": "Healer, Hearty",
@@ -1890,6 +1890,7 @@ async def enhancement(ctx, *args):
         embed.add_field(name="Weapon", value=data['weapon'], inline=False)
         embed.add_field(name="Helm", value=data['helm'], inline=False)
         embed.add_field(name="Cape", value=data['cape'], inline=False)
+        embed.set_footer(text="Feel free to change up the enhancements to suit your needs")
         embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")  # Add the logo here
     else:
         embed = discord.Embed(
