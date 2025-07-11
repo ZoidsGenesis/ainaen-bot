@@ -1735,6 +1735,7 @@ def dailies_embed(include_weekly=False):
         color=discord.Color.blurple()
     )
     
+    embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")
     embed.add_field(
         name="🔥 Classes",
         value=(
@@ -1873,6 +1874,7 @@ async def daily_reset_task():
                 description="Request for help in <#1347562297937236112>",
                 color=discord.Color.green()
             )
+            embed_weekly.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")
             embed_weekly.add_field(
                 name="Ultra Bosses",
                 value=(
