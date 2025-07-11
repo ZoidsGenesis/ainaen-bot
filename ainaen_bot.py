@@ -1736,8 +1736,10 @@ def dailies_embed(include_weekly=False):
     )
     
     embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")
+
+    # Organizing Classes
     embed.add_field(
-        name="<:red:1393037160516550727> Classes",
+        name="Classes",
         value=(
             "**Pyro:** Blaze Token\n"
             "**Cryo:** Ice Token\n"
@@ -1751,8 +1753,9 @@ def dailies_embed(include_weekly=False):
         inline=False
     )
 
+    # Organizing Boss Dailies
     embed.add_field(
-        name="<:red1:1393037179210698792> Boss Dailies",
+        name="Boss Dailies",
         value=(
             "**TimeInn Ultra Bosses:**\n"
             "• **UltraEzrajal** – Insignia\n"
@@ -1768,11 +1771,12 @@ def dailies_embed(include_weekly=False):
         inline=False
     )
 
+    # Organizing Useful Materials
     embed.add_field(
-        name="<:red1:1393037179210698792> Useful Materials",
+        name="Useful Materials",
         value=(
             "**Friendship:** Gifts + NPCs\n"
-            "**BLoD** / **SDKA:** Mine / Hardcore Metals <:member:1392745711665283073>\n"
+            "**BLoD / SDKA:** Mine / Hardcore Metals <:member:1392745711665283073>\n"
             "**Drakath’s Armor:** Dage’s Scroll\n"
             "**NSoD:** Void Aura\n"
             "**Nulgath:** Voidbuquerque\n"
@@ -1780,6 +1784,26 @@ def dailies_embed(include_weekly=False):
             "**Legion Tokens:** Daily Exercise 1–6"
         ),
         inline=False
+    )
+
+    if include_weekly:
+        embed.add_field(
+            name="Weeklies – Insignias",
+            value=(
+                "• **Nulgath** – `/join ultranulgath`\n"
+                "• **Dage** – `/join ultradage`\n"
+                "• **Drago** – `/join ultradrago`\n"
+                "• **Drakath** – `/join championdrakath`\n"
+                "• **Darkon** – `/join ultradarkon`\n"
+                "• **Malgor** – `/join ultraspeaker`\n"
+                "• **Gramiel** – `/join ultragramiel`"
+            ),
+            inline=False
+        )
+
+    embed.set_footer(text="Type /nn for more commands")
+    return embed
+
     )
 
     if include_weekly:
