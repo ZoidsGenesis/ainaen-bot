@@ -1833,6 +1833,30 @@ def dailies_embed(include_weekly=False):
     return embed
 
 # 🔧 !nn command
+@bot.command(name='potionguide')
+async def potion_guide(ctx):
+    embed = discord.Embed(
+        title="**GENERAL POTIONS GUIDE (Refer to the Numbers)**",
+        color=discord.Color.from_rgb(128, 0, 0)
+    )
+    
+    embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")  # Add the logo here
+
+    embed.add_field(name="**Damage Type:**", value="1. Physical Damage\n2. Magic Damage\n3. Hybrid Damage", inline=False)
+
+    embed.add_field(name="**Potion (Skill 6):**", value="1. Potent Honor/Malice Potion\n2. Potent Honor/Malice Potion\n3. Potent Honor/Malice Potion", inline=False)
+
+    embed.add_field(name="**Elixir (15 Minutes):**", value="1. Potent/Unstable Battle Elixir\n2. Potent/Unstable Malevolence Elixir\n3. Potent Destruction/Unstable Keen Elixir", inline=False)
+
+    embed.add_field(name="**Tonic (15 Minutes):**", value="1. Might/Unstable Might Tonic\n2. Sage/Unstable Sage Tonic\n3. Fate/Unstable Fate Tonic", inline=False)
+
+    embed.add_field(name="**Treat this list as a BASELINE.**", inline=False)
+
+    embed.set_footer(text="All Potions/Elixir/Tonics listed will most likely be the only ones you need.")
+
+    await ctx.send(embed=embed)
+
+
 @bot.command(name='nn')
 async def enhancement(ctx, *args):
     message = ' '.join(args).lower().strip()
