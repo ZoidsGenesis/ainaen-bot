@@ -16,7 +16,8 @@ async def nn_help(interaction: discord.Interaction):
         "- `!nn enh for <class name>` – enhancement builds\n"
         "- `!nn resetlist` – shows daily and weekly main todo list.\n"
         "- `!nn potionguide` – shows basic potions guide.\n"
-        "- `!nn cruel` – dont prompt it. only for softies",
+        "- `!nn cruel` – dont prompt it. only for softies.\n"
+        "`Got suggestions? Ping <@1052580900497534999> anytime!`",
         ephemeral=True
     )
 
