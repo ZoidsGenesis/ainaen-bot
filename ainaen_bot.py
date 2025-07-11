@@ -1848,7 +1848,7 @@ async def enhancement(ctx, *args):
 
     if message == "potionguide":
         embed = discord.Embed(
-            title="GENERAL POTIONS GUIDE",
+            title="GENERAL POTIONS GUIDE\nTreat this list as a BASELINE",
             color=discord.Color.from_rgb(128, 0, 0)
         )
         embed.set_thumbnail(url="https://i.imgur.com/T9lX2Nm.png")
@@ -1860,6 +1860,8 @@ async def enhancement(ctx, *args):
         embed.add_field(name="**Elixir (15 Minutes)**", value="1. Potent/Unstable Battle Elixir\n2. Potent/Unstable Malevolence Elixir\n3. Potent Destruction/Unstable Keen Elixir", inline=False)
 
         embed.add_field(name="**Tonic (15 Minutes)**", value="1. Might/Unstable Might Tonic\n2. Sage/Unstable Sage Tonic\n3. Fate/Unstable Fate Tonic", inline=False)
+
+        embed.add_field(name="**Additional Helpful Potions**", value="Potent Revitalize Elixir\nBody/Unstable Body Tonic\nUnstable Mastery Tonic\nUnstable Wise Tonic", inline=False)
 
         embed.set_footer(text="All Potions/Elixir/Tonics listed will most likely be the only ones you need")
         await ctx.send(embed=embed)
