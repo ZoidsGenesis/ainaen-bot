@@ -44,7 +44,10 @@ async def on_member_update(before: discord.Member, after: discord.Member):
 
     if target_role_id in after_role_ids and target_role_id not in before_role_ids:
         try:
-            await after.send("test")
+            await after.send(
+                "Please make sure to read the rules in <#1347562297937236112> before making a ticket. "
+                "If you have any questions feel free to ask the mods."
+            )
             print(f"✅ Sent 'test' DM to {after.name} for receiving role.")
         except discord.Forbidden:
             print(f"⚠️ Could not DM {after.name} (possibly has DMs off).")
@@ -1855,6 +1858,11 @@ def dailies_embed(include_weekly=False):
 # 🔧 !nn command
 @bot.command(name='nn')
 async def enhancement(ctx, *args):
+     # ⛔ Prevent use in DMs
+    if ctx.guild is None:
+        await ctx.send("Please do the commands in the server.")
+        return
+        
     message = ' '.join(args).lower().strip()
 
     if message == "cruel":
