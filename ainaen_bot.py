@@ -37,7 +37,7 @@ async def on_ready():
 async def on_member_update(before: discord.Member, after: discord.Member):
     print(f"[DEBUG] on_member_update triggered for {after.name}")
 
-    target_role_id = 1393611941112713238  # requestor role ID
+    target_role_id = 1380244868198174833  # requestor role ID
 
     before_role_ids = set(role.id for role in before.roles)
     after_role_ids = set(role.id for role in after.roles)
