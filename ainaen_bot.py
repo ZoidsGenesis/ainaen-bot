@@ -1273,9 +1273,9 @@ enhancements = {
         "cape": "Gay"
     },
     "arcana invoker": {
-        "purpose": "Generalist, Offensive Tank",
+        "purpose": "Generalist",
         "class": "Wizard",
-        "weapon": "Ravenous, Valiance, Elysium",
+        "weapon": "Elysium, Ravenous, Valiance",
         "helm": "Pneuma",
         "cape": "Vainglory, Lament"
     },
