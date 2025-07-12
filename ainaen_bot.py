@@ -7,6 +7,7 @@ import os
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 # ✅ SLASH COMMAND: /nn (help only)
 @bot.tree.command(name="nn", description="show help menu for !nn commands")
@@ -32,19 +33,22 @@ async def on_ready():
         print(f"❌ slash command sync failed: {e}")
     bot.loop.create_task(daily_reset_task())
 
+@bot.event
 async def on_member_update(before: discord.Member, after: discord.Member):
+    print(f"[DEBUG] on_member_update triggered for {after.name}")
+
     target_role_id = 1393611941112713238  # requestor role ID
 
-    # Check if the target role was newly added
     before_role_ids = set(role.id for role in before.roles)
     after_role_ids = set(role.id for role in after.roles)
 
     if target_role_id in after_role_ids and target_role_id not in before_role_ids:
         try:
             await after.send("test")
-            print(f"📬 Sent 'test' DM to {after.name} for receiving role.")
+            print(f"✅ Sent 'test' DM to {after.name} for receiving role.")
         except discord.Forbidden:
             print(f"⚠️ Could not DM {after.name} (possibly has DMs off).")
+
 
 enhancements = {
     "abyssal angel": {
