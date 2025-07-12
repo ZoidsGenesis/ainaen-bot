@@ -253,9 +253,9 @@ enhancements = {
     "chaos avenger": {
         "purpose": "Offensive Tank, Bossfighter (DPS)",
         "class": "Luck",
-        "weapon": "Ravenous, Dauntless",
-        "helm": "Anima",
-        "cape": "Vainglory, Avarice"
+        "weapon": "Ravenous, Dauntless, Valiance",
+        "helm": "Anima, Vim, Forge",
+        "cape": "Vainglory, Penitence, Avarice"
     },
     "chaos champion prime": {
         "purpose": "Farming, Soloer (DPS)",
