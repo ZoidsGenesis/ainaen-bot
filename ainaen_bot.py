@@ -45,8 +45,10 @@ async def on_member_update(before: discord.Member, after: discord.Member):
     if target_role_id in after_role_ids and target_role_id not in before_role_ids:
         try:
             await after.send(
-                "Please make sure to read the rules in <#1347562297937236112> before making a ticket. "
-                "If you have any questions feel free to ask the mods."
+                "Please grab some glasses and maybe a dictionary. 🤓\n\n"
+                "Now, READ the rules in <#1347562297937236112>\n\n"
+                "Done reading? Read it again. <:woozy:1393282491837714502>\n\n"
+                "Grats, you are ready to open a ticket and get carried. <:salute:1347889517641859082>"
             )
             print(f"✅ Sent 'test' DM to {after.name} for receiving role.")
         except discord.Forbidden:
