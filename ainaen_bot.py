@@ -69,6 +69,13 @@ enhancements = {
         "weapon": "Valiance, Acheron",
         "helm": "Examen",
         "cape": "Lament"
+     },
+    "deathknight": {
+        "purpose": "Collecting Purposes",
+        "class": "Fighter",
+        "weapon": "Dauntless",
+        "helm": "Anime",
+        "cape": "Fighter"
     },
     "alpha doomega": {
         "purpose": "Stun PvP",
