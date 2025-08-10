@@ -1,1 +1,1 @@
-worker: python ainaen_bot.py
+worker: python3 ainaen_bot.py
